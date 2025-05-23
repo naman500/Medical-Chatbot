@@ -2,4 +2,3 @@ langchain
 faiss-cpu
 langchain-community
 langchain_huggingface
-pypdf
