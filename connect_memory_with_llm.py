@@ -26,11 +26,13 @@ HF_TOKEN=os.environ.get("HF_TOKEN")
 HUGGINGFACE_REPO_ID="mistralai/Mistral-7B-Instruct-v0.3"
 
 def load_llm(huggingface_repo_id):
-    llm=HuggingFaceEndpoint(
+    llm = HuggingFaceEndpoint(
         repo_id=huggingface_repo_id,
         temperature=0.5,
-        # model_kwargs={"token":HF_TOKEN,
-        #               "max_length":"512"}
+        max_new_tokens=512,
+        top_k=20,
+        top_p=0.8,
+        huggingfacehub_api_token=HF_TOKEN
     )
     return llm
 
@@ -68,5 +70,5 @@ qa_chain=RetrievalQA.from_chain_type(
 # Now invoke with a single query
 user_query=input("Write Query Here: ")
 response=qa_chain.invoke({'query': user_query})
-print("RESULT: ", response["result"])
-print("SOURCE DOCUMENTS: ", response["source_documents"])
+print("Answer : ", response["result"])
+# print("SOURCE DOCUMENTS: ", response["source_documents"])
