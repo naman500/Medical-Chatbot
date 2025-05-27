@@ -1,4 +1,8 @@
 langchain
-faiss-cpu
+langchain-core
 langchain-community
-langchain_huggingface
+langchain-huggingface
+python-dotenv
+faiss-cpu
+huggingface-hub
+sentence-transformers
